@@ -1,0 +1,31 @@
+# VS2022 用户配置和缓存
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# 编译输出目录
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+out/
+build/
+
+# vcpkg 本地安装缓存
+vcpkg_installed/
+
+# 编译中间文件
+*.obj
+*.o
+*.lib
+*.dll
+*.pdb
+*.ilk
+*.exp
+
+# 系统文件
+Thumbs.db
+.DS_Store
+
