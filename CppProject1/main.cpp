@@ -7,7 +7,9 @@ extern bool mh_flag_init;
 extern bool mh_flag_hook_create;
 extern bool mh_flag_hook_en;
 
-int main()
+extern void CreateTrayIcon(void* hwnd);
+
+int main(int argc, char *argv[])
 {
 	bool show_imgui = true;
 	bool tmp_bool = false;
@@ -17,19 +19,40 @@ int main()
 	InitWindow(800, 600, "你好！raylib!");
 	SetTargetFPS(144);
 
-	rlImGuiSetup(true);
+	CreateTrayIcon(GetWindowHandle());
+
+	// rlImGuiSetup(true);
+	rlImGuiBeginInitImGui();
 
 	ImGuiIO& io = ImGui::GetIO();
 	io.IniFilename = nullptr;
-	io.Fonts->Clear();
+
+	/*ImFontConfig hack_cfg;
+	hack_cfg.SizePixels = 18.0f;
+	hack_cfg.OversampleH = 2;
+	hack_cfg.OversampleV = 1;
 	io.Fonts->AddFontFromFileTTF(
-		"C:/Windows/Fonts/msyh.ttc",
+		"assest/fonts/HackNerdFontMono-Regular.ttf",
 		18.0f,
-		NULL,
-		io.Fonts->GetGlyphRangesChineseFull()
-		// io.Fonts->GetGlyphRangesChineseSimplifiedCommon()
+		&hack_cfg,
+		io.Fonts->GetGlyphRangesDefault()
+	);*/
+
+	ImFontConfig msyh_cfg;
+	msyh_cfg.MergeMode = true;
+	msyh_cfg.SizePixels = 18.0f;
+	msyh_cfg.OversampleH = 2;
+	msyh_cfg.OversampleV = 2;
+	msyh_cfg.FontNo = 0;
+	io.Fonts->AddFontFromFileTTF(
+		"assest/fonts/msyh.ttc",
+		18.0f,
+		&msyh_cfg,
+		// io.Fonts->GetGlyphRangesChineseFull()
+		io.Fonts->GetGlyphRangesChineseSimplifiedCommon()
 	);
-	io.Fonts->Build();
+
+	rlImGuiEndInitImGui();
 
 	while (!WindowShouldClose())
 	{

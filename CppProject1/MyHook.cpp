@@ -2,12 +2,12 @@
 #include <windows.h>
 #include "MinHook.h"
 
-typedef int(WINAPI* fpMessageBoxA)(HWND, LPCSTR, LPCSTR, UINT);
+typedef int(WINAPI *fpMessageBoxA)(HWND, LPCSTR, LPCSTR, UINT);
 fpMessageBoxA originalMessageBoxA = nullptr;
 
 int WINAPI hookMessageBoxA(HWND hWnd, LPCSTR lpText, LPCSTR lpCaption, UINT uType)
 {
-	return originalMessageBoxA(hWnd, "你好！MessageBoxA Hook", "标题：MessageBoxA Hook", uType);
+	return originalMessageBoxA(hWnd, "你好！Hook", "标题：Hook", uType);
 }
 
 bool mh_flag_init = false;
@@ -44,7 +44,7 @@ void mh_hook_create()
 {
 	if (mh_flag_init && !mh_flag_hook_create)
 	{
-		if (MH_CreateHook(&MessageBoxA, &hookMessageBoxA, reinterpret_cast<void**>(&originalMessageBoxA)) == MH_OK)
+		if (MH_CreateHook(&MessageBoxA, &hookMessageBoxA, reinterpret_cast<LPVOID*>(&originalMessageBoxA)) == MH_OK)
 		{
 			mh_flag_hook_create = true;
 		}

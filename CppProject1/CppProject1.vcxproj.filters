@@ -45,6 +45,9 @@
     <ClCompile Include="MyHook.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Win32Helper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -81,6 +84,9 @@
       <Filter>rlImGui</Filter>
     </ClInclude>
     <ClInclude Include="MyHook.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32Helper.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
