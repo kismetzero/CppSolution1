@@ -30,7 +30,7 @@
 #include "raylib.h"
 #include "rlgl.h"
 
-#include "../imgui/imgui.h"
+#include "imgui.h"
 
 #include <math.h>
 #include <limits>

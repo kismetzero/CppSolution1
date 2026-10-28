@@ -1,6 +1,6 @@
 #include "raylib.h"
-#include "imgui/imgui.h"
-#include "rlImGui/rlImGui.h"
+#include "imgui.h"
+#include "rlImGui.h"
 #include "MyHook.h"
 
 extern bool mh_flag_init;
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	InitWindow(800, 600, "你好！raylib!");
 	SetTargetFPS(144);
 
-	CreateTrayIcon(GetWindowHandle());
+	// CreateTrayIcon(GetWindowHandle());
 
 	// rlImGuiSetup(true);
 	rlImGuiBeginInitImGui();
